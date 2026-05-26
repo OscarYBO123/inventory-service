@@ -17,13 +17,15 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        Inventory inventory = new Inventory();
-
-        inventory.setProductId(1L);
-        inventory.setQuantity(15);
-
-        repository.save(inventory);
-
-        System.out.println("INVENTARIO INSERTADO");
+    	if (repository.findByProductId(1L).isEmpty()) {
+	        Inventory inventory = new Inventory();
+	
+	        inventory.setProductId(1L);
+	        inventory.setQuantity(15);
+	
+	        //repository.save(inventory);
+	
+	        System.out.println("INVENTARIO INSERTADO");
+    	}
     }
 }
